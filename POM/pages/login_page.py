@@ -66,3 +66,23 @@ class LoginPage(BasePage):
             return True
         except:
             return False
+
+    def is_logged_in_as_instructor(self, timeout=5):
+        """Check if logged in as instructor by verifying URL contains /instructor/dashboard."""
+        try:
+            WebDriverWait(self.driver, timeout).until(
+                lambda driver: "/instructor/dashboard" in driver.current_url
+            )
+            return True
+        except:
+            return False
+
+    def is_logged_in_as_admin(self, timeout=5):
+        """Check if logged in as admin by verifying URL contains /admin."""
+        try:
+            WebDriverWait(self.driver, timeout).until(
+                lambda driver: "/admin" in driver.current_url
+            )
+            return True
+        except:
+            return False
