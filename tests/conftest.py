@@ -1,6 +1,6 @@
 import pytest
 from selenium import webdriver
-from POM.pages.login_page import LoginPage
+from POM.login_page.login_page import LoginPage
 
 
 # This is a pytest fixture that provides the base URL for tests

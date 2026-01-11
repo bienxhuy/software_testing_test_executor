@@ -1,7 +1,7 @@
 """ Test login usecase.
 """
 import pytest
-from POM.notifications.login_page_notifications import LoginPageNotifications as Noti
+from POM.login_page.login_page_notifications import LoginPageNotifications as Noti
 
 
 class TestAuth:
@@ -227,3 +227,7 @@ class TestAuth:
         # Should show generic user-friendly message
         assert "400" not in error_message and "500" not in error_message and "status code" not in error_lower, \
             f"Expected user-friendly error message, but got technical error: {error_message}"
+
+    # TC_UC:2_001
+    # Verify user can logout successfully from the system.
+    
