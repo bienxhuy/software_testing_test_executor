@@ -14,6 +14,12 @@ class StudentDashboardPage(BasePage):
     # Logout method
     def logout(self):
         """Click logout button to log out from student dashboard."""
+        # Open menu first if necessary
+        self.safe_click(
+          el.MENU_BUTTON,
+          element="Menu Button",
+          success_message=Noti.MENU_BUTTON_CLICKED_SUCCESS,
+        )
         return self.safe_click(
             el.LOGOUT_BUTTON,
             element="Logout Button",

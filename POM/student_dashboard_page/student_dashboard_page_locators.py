@@ -1,4 +1,6 @@
 class StudentDashboardPageLocators:
+    # Menu Button
+    MENU_BUTTON = "//button[@aria-label='Menu' or @aria-label='Open menu' or contains(@class, 'menu-button')] | /html/body/div/header/div/div[2]/button[2]"
     # Buttons
     LOGOUT_BUTTON = "//div[text()='Đăng xuất']"
     # Confirmation dialog (generic patterns for modal/dialog detection)
