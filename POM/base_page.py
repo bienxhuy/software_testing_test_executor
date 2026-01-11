@@ -8,7 +8,7 @@ from selenium.common.exceptions import TimeoutException
 class BasePage: 
     def __init__(self, driver):
         self.driver = driver
-        self.BASE_URL = "http://localhost:3000"
+        self.BASE_URL = "http://fe:3000"
 
     # This method safely clicks an element, waiting for it to be clickable
     def safe_click(self, locator, success_message, element="element", timeout=10):
