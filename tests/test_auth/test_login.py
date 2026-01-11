@@ -4,7 +4,7 @@ import pytest
 from POM.login_page.login_page_notifications import LoginPageNotifications as LgNoti
 
 
-class TestAuth:
+class TestLogin:
     """Test class for authentication-related tests."""
 
     # TC_UC:1_001
