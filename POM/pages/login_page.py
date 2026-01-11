@@ -2,6 +2,9 @@ from POM.notifications.login_page_notifications import LoginPageNotifications as
 from POM.pages.base_page import BasePage
 from POM.locators.login_page_locators import LoginPageLocators as el  
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 
 
 class LoginPage(BasePage):
@@ -86,3 +89,27 @@ class LoginPage(BasePage):
             return True
         except:
             return False
+
+    def get_error_message_email(self, timeout=3):
+        """Get error message email text if displayed."""
+        try:
+            error_element = WebDriverWait(self.driver, timeout).until(
+                EC.presence_of_element_located((By.XPATH, el.ERROR_MESSAGE_EMAIL))
+            )
+            return error_element.text
+        except TimeoutException:
+            return None
+    
+    def get_error_message_password(self, timeout=3):
+        """Get error message password text if displayed."""
+        try:
+            error_element = WebDriverWait(self.driver, timeout).until(
+                EC.presence_of_element_located((By.XPATH, el.ERROR_MESSAGE_PASSWORD))
+            )
+            return error_element.text
+        except TimeoutException:
+            return None
+
+    def is_still_on_login_page(self):
+        """Check if still on login page (login failed)."""
+        return "/login" in self.driver.current_url
