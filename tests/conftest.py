@@ -7,7 +7,7 @@ from POM.login_page.login_page import LoginPage
 # Base URL of the frontend application
 @pytest.fixture(scope="session")
 def frontend_base_url():
-    return "http://fe:3000" 
+    return "http://localhost:3000" 
 
 
 # This is a pytest fixture that initializes a driver instance for testing
