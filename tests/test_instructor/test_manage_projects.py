@@ -35,6 +35,10 @@ class TestManageProjects:
         # Step 1: Click on "Tạo dự án mới" button
         instructor_dashboard.click_create_project_button()
         
+        # Wait for navigation to complete
+        import time
+        time.sleep(1)
+        
         # Verify system redirects to Create Project Screen
         assert "/instructor/project/create" in driver.current_url, \
             f"Expected to be redirected to create project page, but current URL is: {driver.current_url}"
