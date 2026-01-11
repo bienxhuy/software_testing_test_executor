@@ -1,7 +1,7 @@
 """ Test login usecase.
 """
 import pytest
-from POM.login_page.login_page_notifications import LoginPageNotifications as Noti
+from POM.login_page.login_page_notifications import LoginPageNotifications as LgNoti
 
 
 class TestAuth:
@@ -17,7 +17,7 @@ class TestAuth:
         )
         
         # Verify login action completed
-        assert result == Noti.LOGIN_BUTTON_CLICKED_SUCCESS, f"Login action failed: {result}"
+        assert result == LgNoti.LOGIN_BUTTON_CLICKED_SUCCESS, f"Login action failed: {result}"
         
         # Verify actual login success
         assert login_page.is_logged_in_as_student(), "Login verification failed: Not redirected to student dashboard"
@@ -32,7 +32,7 @@ class TestAuth:
         )
         
         # Verify login action completed
-        assert result == Noti.LOGIN_BUTTON_CLICKED_SUCCESS, f"Login action failed: {result}"
+        assert result == LgNoti.LOGIN_BUTTON_CLICKED_SUCCESS, f"Login action failed: {result}"
         
         # Verify actual login success
         assert login_page.is_logged_in_as_instructor(), "Login verification failed: Not redirected to instructor dashboard"
@@ -47,7 +47,7 @@ class TestAuth:
         )
         
         # Verify login action completed
-        assert result == Noti.LOGIN_BUTTON_CLICKED_SUCCESS, f"Login action failed: {result}"
+        assert result == LgNoti.LOGIN_BUTTON_CLICKED_SUCCESS, f"Login action failed: {result}"
         
         # Verify actual login success
         assert login_page.is_logged_in_as_admin(), "Login verification failed: Not redirected to admin dashboard"
@@ -63,7 +63,7 @@ class TestAuth:
         )
         
         # Verify login button was clicked
-        assert result == Noti.LOGIN_BUTTON_CLICKED_SUCCESS, f"Login action failed: {result}"
+        assert result == LgNoti.LOGIN_BUTTON_CLICKED_SUCCESS, f"Login action failed: {result}"
         
         # Verify still on login page (login failed)
         assert login_page.is_still_on_login_page(), "Expected to stay on login page after failed login"
@@ -84,7 +84,7 @@ class TestAuth:
         )
         
         # Verify login button was clicked
-        assert result == Noti.LOGIN_BUTTON_CLICKED_SUCCESS, f"Login action failed: {result}"
+        assert result == LgNoti.LOGIN_BUTTON_CLICKED_SUCCESS, f"Login action failed: {result}"
         
         # Verify still on login page (login failed)
         assert login_page.is_still_on_login_page(), "Expected to stay on login page after failed login"
@@ -105,7 +105,7 @@ class TestAuth:
         )
         
         # Verify login button was clicked
-        assert result == Noti.LOGIN_BUTTON_CLICKED_SUCCESS, f"Login action failed: {result}"
+        assert result == LgNoti.LOGIN_BUTTON_CLICKED_SUCCESS, f"Login action failed: {result}"
         
         # Verify still on login page (login failed)
         assert login_page.is_still_on_login_page(), "Expected to stay on login page after failed login"
@@ -126,7 +126,7 @@ class TestAuth:
         )
         
         # Verify login button was clicked
-        assert result == Noti.LOGIN_BUTTON_CLICKED_SUCCESS, f"Login action failed: {result}"
+        assert result == LgNoti.LOGIN_BUTTON_CLICKED_SUCCESS, f"Login action failed: {result}"
         
         # Verify still on login page (login failed)
         assert login_page.is_still_on_login_page(), "Expected to stay on login page after failed login"
@@ -154,7 +154,7 @@ class TestAuth:
             )
             
             # Verify login button was clicked
-            assert result == Noti.LOGIN_BUTTON_CLICKED_SUCCESS, f"Login action failed on attempt {attempt}: {result}"
+            assert result == LgNoti.LOGIN_BUTTON_CLICKED_SUCCESS, f"Login action failed on attempt {attempt}: {result}"
             
             # Verify still on login page
             assert login_page.is_still_on_login_page(), f"Expected to stay on login page after attempt {attempt}"
@@ -203,7 +203,7 @@ class TestAuth:
         )
         
         # Verify login button was clicked
-        assert result == Noti.LOGIN_BUTTON_CLICKED_SUCCESS, f"Login action failed: {result}"
+        assert result == LgNoti.LOGIN_BUTTON_CLICKED_SUCCESS, f"Login action failed: {result}"
         
         # CRITICAL: Verify login was NOT successful (no unauthorized access)
         assert login_page.is_still_on_login_page(), "SQL injection should NOT grant access - must stay on login page"
