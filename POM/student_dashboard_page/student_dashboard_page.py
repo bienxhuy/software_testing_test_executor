@@ -2,13 +2,14 @@ from POM.student_dashboard_page.student_dashboard_page_notifications import Stud
 from POM.base_page import BasePage
 from POM.student_dashboard_page.student_dashboard_page_locators import StudentDashboardPageLocators as el
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 
 
 class StudentDashboardPage(BasePage):
     def __init__(self, driver):
         super().__init__(driver)
-        # Assuming the student dashboard URL is /student/dashboard
-        # No need to navigate here, student should already be on dashboard after login
     
     # Logout method
     def logout(self):
@@ -29,3 +30,32 @@ class StudentDashboardPage(BasePage):
             return True
         except:
             return False
+    
+    # Check if confirmation dialog appears
+    def is_logout_confirmation_dialog_displayed(self, timeout=3):
+        """Check if confirmation dialog is displayed after clicking logout."""
+        try:
+            dialog = WebDriverWait(self.driver, timeout).until(
+                EC.presence_of_element_located((By.XPATH, el.LOGOUT_CONFIRMATION_DIALOG))
+            )
+            return dialog.is_displayed()
+        except TimeoutException:
+            return False
+    
+    # Confirm logout in dialog
+    def confirm_logout(self):
+        """Click confirm button in logout confirmation dialog."""
+        return self.safe_click(
+            el.LOGOUT_CONFIRM_BUTTON,
+            element="Confirm Button",
+            success_message="Confirm button clicked successfully",
+        )
+    
+    # Cancel logout in dialog
+    def cancel_logout(self):
+        """Click cancel button in logout confirmation dialog."""
+        return self.safe_click(
+            el.LOGOUT_CANCEL_BUTTON,
+            element="Cancel Button",
+            success_message="Cancel button clicked successfully",
+        )
