@@ -17,7 +17,7 @@ def frontend_base_url():
 
 # This is a pytest fixture that initializes a driver instance for testing
 # Provides a driver instance to the tests
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def driver():
     options = webdriver.ChromeOptions()
     options.add_argument("--headless")
