@@ -43,4 +43,6 @@ htmlcov/
 .DS_Store
 Thumbs.db
 
+# Other
 junit.xml
+.env

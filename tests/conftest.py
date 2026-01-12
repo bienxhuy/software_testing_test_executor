@@ -1,13 +1,18 @@
 import pytest
 from selenium import webdriver
 from POM.login_page.login_page import LoginPage
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from a .env file if present
+load_dotenv()
 
 
 # This is a pytest fixture that provides the base URL for tests
 # Base URL of the frontend application
 @pytest.fixture(scope="session")
 def frontend_base_url():
-    return "http://localhost:3000" 
+    return os.getenv("FRONTEND_BASE_URL", "http://localhost:3000")
 
 
 # This is a pytest fixture that initializes a driver instance for testing
